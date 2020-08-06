@@ -1,0 +1,11 @@
+<tabset class="tabslistcontainer">
+      <tab heading="View">
+          <app-projectView [currentProject]=currentProject (status)="getStatus($event)"></app-projectView>
+      </tab>
+      <tab heading="Executions">
+          Executions
+      </tab>
+      <tab heading="Activities">
+          Activities
+      </tab>
+  </tabset>

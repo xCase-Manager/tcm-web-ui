@@ -1,0 +1,19 @@
+<ng-container *ngIf="area=='detail'">
+    <div *ngIf="currentTestcase.id!=''">
+        <div *ngIf="status=='update'" class="formcontainer">
+            <app-testcase-create (createTestcase)="onCreate($event)" [currentTestcase]=currentTestcase></app-testcase-create>
+        </div>           
+        <div *ngIf="status=='edit'" class="formcontainer">
+            <app-testcaseMenu [currentTestcase]=currentTestcase (status)="onEdit($event)"></app-testcaseMenu>
+        </div>  
+    </div> 
+    <div *ngIf="status=='create'" class="formcontainer">
+        <app-testcase-create (createTestcase)="onCreate($event)" [currentProject]=currentProjectId [currentTestcase]=currentTestcase></app-testcase-create>
+    </div>  
+    <app-loader *ngIf="(currentTestcase.id=='') && (status=='edit' || status=='update') "></app-loader>
+</ng-container>
+<ng-container *ngIf="area=='list'">
+    <div #testcaseSearch>
+        <testcaseSearch></testcaseSearch>
+    </div>
+</ng-container>

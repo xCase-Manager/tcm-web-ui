@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li id="reference" class="nav-item">      
+        <a href="#">TCM
+          <span class="row headerApiSwitchDescription">
+              <span class="headerApiSwitchOwner">Support</span>             
+              <span class="headerApiSwitchBullet">•</span>                
+              <span class="headerApiSwitchSubdomain">API</span>           
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="projectcreate" routerLinkActive="active" class="nav-link" href="#">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="cycle" routerLinkActive="active" class="nav-link" href="#">Cycles</a>
+      </li>
+
+      <li class="nav-item" class="btn-group" dropdown>      
+        <a id="project-button" dropdownToggle aria-controls="project-dropdown" class="nav-link" href="#" onclick="return false;">
+          Projects
+        </a>
+        <ul id="project-dropdown" class="dropdown-menu" role="menu" aria-labelledby="project-button">
+          <div>
+            <li role="menuitem"><a routerLink="projects" routerLinkActive="active" class="nav-link" href="#">Search Project</a></li>
+            <li role="menuitem"><a routerLink="project" routerLinkActive="active" class="nav-link" href="#">Create Project</a></li>
+          </div>
+        </ul>
+      </li>
+  
+      <li class="nav-item" class="btn-group" dropdown>      
+          <a id="testcase-button" dropdownToggle aria-controls="testcase-dropdown" class="nav-link" href="#" onclick="return false;">
+            Test Cases
+          </a>
+          <ul id="testcase-dropdown" class="dropdown-menu" role="menu" aria-labelledby="testcase-button">
+            <div>
+              <li role="menuitem"><a routerLink="testcases" routerLinkActive="active" class="nav-link" href="#">Search Test</a></li>
+              <li role="menuitem"><a routerLink="testcase" routerLinkActive="active" class="nav-link" href="#">Create Test</a></li>
+            </div>
+          </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="btn-group" dropdown>
+      <button id="settings-button" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="settings-dropdown">
+        Settings
+      </button>
+      <ul id="settings-dropdown" class="dropdown-menu" role="menu" aria-labelledby="settings-button">
+        <div>
+          <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+          <li role="menuitem"><a class="dropdown-item noborder" href="#">Something else here</a></li>
+        </div>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem bottom"><a class="dropdown-item noborder" href="#">Separated link</a>
+        </li>
+      </ul>
+  </div>
+</nav>

@@ -1,0 +1,126 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+/*******************************
+*          Sortable search list
+********************************/
+/*
+*   list table width
+
+table .search-list {
+    
+}
+*/
+.search-container {
+    width: 80%;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin: auto;
+}
+
+/*
+*   list table header - search input field
+*/
+.search-list-head {
+    width: 33%;
+}
+
+
+/*
+*   list table container
+*/
+.search-list-body {
+    width: 100%;
+    min-height: 250px;
+}
+
+/*
+*   table column titles
+*       1st column width: 20%
+*       2nd column width: 80%
+*/
+.search-list-body thead {
+    width: 100%;
+    display: block;
+    //overflow:auto;
+}
+
+.search-list-body thead tr{
+    width: 100%;
+    display: block;
+    //overflow:auto;
+}
+
+.search-list-body thead tr th:nth-child(1) {
+    width: 20%;
+    display: block;
+    float: left;
+}
+
+.search-list-body thead tr th:nth-child(2) {
+    width: 80%;
+    display: block;
+    float: left;
+}
+
+/*
+.search-list-body thead tr th {
+    width: 100%;
+}
+*/
+
+
+/*
+*   list table column min width
+*/
+.search-list-body tbody tr{
+    width: 100%;
+    //height: 30px;
+    display: block;
+    //overflow:auto;
+}
+
+.search-list-body tbody tr td:nth-child(1){
+    width: 20%;
+    display: block;
+    float: left;
+}
+
+.search-list-body tbody tr td:nth-child(2){
+    width: 80%;
+    display: block;
+    float: left;
+}
+
+/*
+.search-list-body tbody tr td{
+    width: 350px;
+}
+*/
+
+
+
+/*
+*   pagination section
+
+.search-list ul{
+    width: 450px;
+}
+
+:first-child
+*/
+.search-list-control {
+    margin-top: 15px;
+    width: 100%;
+}
+
+pagination-template ul{
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

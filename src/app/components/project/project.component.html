@@ -1,0 +1,19 @@
+<ng-container *ngIf="area=='detail'">
+    <div *ngIf="currentProject.id!=''">
+        <div *ngIf="status=='update'" class="formcontainer">
+            <app-project-create (createProject)="onCreate($event)" [currentProject]=currentProject></app-project-create>
+        </div>           
+        <div *ngIf="status=='edit'" class="formcontainer">
+            <app-projectMenu [currentProject]=currentProject (status)="onEdit($event)"></app-projectMenu>
+        </div>  
+    </div> 
+    <div *ngIf="status=='create'" class="formcontainer">
+        <app-project-create (createProject)="onCreate($event)" [currentProject]=globals.currentProjectId></app-project-create>
+    </div>  
+    <app-loader *ngIf="(currentProject.id=='') && (status=='edit' || status=='update') "></app-loader>
+</ng-container>
+<ng-container *ngIf="area=='list'">
+    <div #projectSearch>
+        <projectSearch></projectSearch>
+    </div>
+</ng-container>

@@ -1,0 +1,44 @@
+<h1>{{title}}</h1>
+<!--
+  <h2>current test case: {{currentTestcase.name}} and the id is: {{currentTestcaseId}}</h2>
+  <p *ngIf="testcases.length > 3">There are many test cases!</p>
+-->
+  <p>Test project:</p>
+  <ul>
+            <li>
+                    id:  {{ currentProject.id }}
+            </li>
+            <li>
+                  tilte:  {{ currentProject.name }}
+            </li>
+            <button (click)="edit()" type="submit" class="btn btn-primary">Edit</button>
+        </ul>
+
+<!--
+  <ng-container *ngIf="errorMessageTestCaseNotFound$!=null; then error else testcaseDetail"></ng-container>
+  <ng-template #testcaseDetail>
+        <ng-container *ngIf="testcase$!=null; then testcase else loader">
+        </ng-container>
+  </ng-template>
+
+  <ng-template #loader>
+        <app-loader></app-loader>
+  </ng-template>
+
+  <ng-template #testcase>
+        <ul>
+                <li>
+                        testcase: 
+                </li>
+                <li>
+                        {{ testcase$.name }}
+                </li>
+                <button (click)="edit()" type="submit" class="btn btn-primary">Edit</button>
+            </ul>
+
+  </ng-template>
+
+  <ng-template #error>
+        <p>{{ errorMessageTestCaseNotFound$ }}</p>
+  </ng-template>
+-->

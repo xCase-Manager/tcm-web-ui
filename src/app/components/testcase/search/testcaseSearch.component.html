@@ -1,0 +1,73 @@
+<!--
+<div class="container">
+  <div class="row">
+    <nav class="navbar">
+      <input class="form-control" type="text" name="search" [(ngModel)]="filter">      
+    </nav>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th (click)="sort('name')">Name
+            <span class="glyphicon sort-icon" *ngIf="key =='name'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th>
+          <th (click)="sort('genre')">Genre
+            <span class="glyphicon sort-icon" *ngIf="key =='genre'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of games | orderBy: key : reverse | filter: filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+          <td>{{i}}</td>
+          <td>{{game.name}}</td>
+          <td>{{game.genre}}</td>
+        </tr>
+      </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+  </div>
+</div>
+-->
+  <div class="search-container">
+    <div class="row">
+        <div class="search-list-head">
+          <!-- <input class="form-control" type="text" name="search" [(ngModel)]="testcaseFilter.title" placeholder="Search for a test case id or title"> -->
+          <input class="form-control" type="text" name="search" (keyup)="searchTerm$.next($event.target.value)" placeholder="Search for a test case id or title">
+
+        </div>
+          <!--
+          <ul>
+            <li *ngFor="let user of users | filterBy: userFilter">{{ user.name }}</li>
+            
+            <li *ngIf="(users | filterBy: userFilter).length === 0">No matching elements</li>
+          </ul>
+           --> 
+          <div class="search-list-body">
+            <table class="table">     
+                <thead>
+                  <tr>
+                    <th (click)="testcaseSort('id')">id
+                        <span class="glyphicon sort-icon" *ngIf="testcaseKey =='id'" [ngClass]="{'glyphicon-chevron-up':listReverse,'glyphicon-chevron-down':!listReverse}"></span>
+                    </th>
+                    <th (click)="testcaseSort('title')">title
+                        <span class="glyphicon sort-icon" *ngIf="testcaseKey =='title'" [ngClass]="{'glyphicon-chevron-up':listReverse,'glyphicon-chevron-down':!listReverse}"></span>
+                    </th>              
+                  </tr>
+                </thead>               
+                <tbody>              
+                    <tr *ngFor="let testcase of testcases | orderBy: testcaseKey : listReverse | filterBy: testcaseFilter | paginate: { itemsPerPage: 15, currentPage: listPage }; let i = index">
+                      <td><a routerLink='../testcase/{{testcase.projectId}}-{{testcase.id}}'>{{testcase.projectId}}-{{testcase.id}}</a></td>
+                      <td>{{testcase.title}}</td>
+                    </tr>
+                    <!-- <tr *ngIf="(testcases | filterBy: testcaseFilter).length === 0">No matching test case</tr> -->
+                    <tr *ngIf="(reloadedList$ && testcases.length === 0)">No matching test case</tr>
+                    <tr *ngIf="(!reloadedList$ && testcases==undefined)"><app-loader></app-loader></tr>                    
+                </tbody>
+                <tfoot></tfoot>                         
+            </table>
+          </div>
+          <div class="search-list-control">
+              <pagination-controls (pageChange)="listPage = $event"></pagination-controls> 
+          </div> 
+    </div>
+  </div>
