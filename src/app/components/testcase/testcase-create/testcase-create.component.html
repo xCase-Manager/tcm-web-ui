@@ -4,16 +4,6 @@
       <div>
         <h3>{{testcaseFormLabel }}</h3>
         <div class="form-group">
-          <!--
-          <label for="testcaseCode">code</label>
-          <input formControlName="testcaseCode" type="text" class="form-control" id="testcaseCode" name="testcaseCode" aria-describedby="codeHelp" placeholder="Enter project code">
-          <small id="codeHelp" class="form-text text-muted">The project code must be 5 characters long, and can contain letters and numbers, but must not contain spaces, special characters, or emoji.</small>
-          <div *ngIf="testcaseForm.controls['testcaseCode'].errors && !testcaseForm.controls['testcaseCode'].pristine" class="error-msg">
-              <div [hidden]="!testcaseForm.controls['testcaseCode'].errors.required">Code is required.</div>
-          </div>
-          -->
-        </div>
-        <div class="form-group">
           <label for="testcaseTitle">Title</label>
           <input formControlName="testcaseTitle" type="text" class="form-control" id="testcaseTitle" name="testcaseTitle" aria-describedby="titleHelp" placeholder="Enter a test case title">
           <small id="titleHelp" class="form-text text-muted">The test case name must be 8-20 characters long, and can contain letters, numbers, and spaces, but must not contain special characters, or emoji.</small>
@@ -29,7 +19,6 @@
           <input formControlName="testcaseDescription" type="text" class="form-control" id="testcaseDescription" name="testcaseDescription" aria-describedby="descriptionHelp" placeholder="Enter a test case description">
           <small id="descriptionHelp" class="form-text text-muted">Meaningful test case description.</small>
         </div>
-
         <div id="stepsArea" class="form-group">
             <div>
               <h4>Steps</h4>

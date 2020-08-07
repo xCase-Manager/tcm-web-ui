@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterViewInit, Renderer2, ElementRef} from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpClientModule, HttpRequest} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TabsetConfig } from 'ngx-bootstrap/tabs';
-import { Observable, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 import {Project} from './project';
 import { Globals } from '../../globals';

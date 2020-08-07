@@ -17,3 +17,8 @@
         <projectSearch></projectSearch>
     </div>
 </ng-container>
+<ng-container *ngIf="status=='testcaseList'">
+    <div #testcaseSearch>
+        <testcaseSearch [currentProject]=currentProjectId></testcaseSearch>
+    </div>
+</ng-container>

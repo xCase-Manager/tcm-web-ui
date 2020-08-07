@@ -16,6 +16,9 @@ export const appRoutes: Routes = [
     component: ProjectSearchComponent 
   },
   //testcases
+  { path: 'project/:id/testcases', 
+    component: TestcaseSearchComponent 
+  },
   { path: 'testcase',
     component: TestcaseComponent 
   },
@@ -24,8 +27,5 @@ export const appRoutes: Routes = [
   },
   { path: 'testcases', 
     component: TestcaseSearchComponent 
-  },
-  { path: 'cycle', 
-    component: TestcaseComponent 
   }
 ];

@@ -10,10 +10,10 @@
     <div *ngIf="status=='create'" class="formcontainer">
         <app-testcase-create (createTestcase)="onCreate($event)" [currentProject]=currentProjectId [currentTestcase]=currentTestcase></app-testcase-create>
     </div>  
-    <app-loader *ngIf="(currentTestcase.id=='') && (status=='edit' || status=='update') "></app-loader>
+    <app-loader *ngIf="(currentTestcase.id=='') && (status=='edit' || status=='update')"></app-loader>
 </ng-container>
 <ng-container *ngIf="area=='list'">
     <div #testcaseSearch>
-        <testcaseSearch></testcaseSearch>
+        <testcaseSearch [currentProject]=currentProjectId></testcaseSearch>
     </div>
 </ng-container>

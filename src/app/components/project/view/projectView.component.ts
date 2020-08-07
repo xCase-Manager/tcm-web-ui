@@ -3,10 +3,8 @@ import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpClientModule, Htt
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
 import { Project } from '../project';
 import { SelectedProject } from '../selectedproject';
-import { ProjectComponent } from '../project.component';
 import { ProjectService } from '../project.service';
 
 interface IProject {
@@ -29,17 +27,7 @@ export class ProjectViewComponent implements OnInit{
 
   @Input() currentProject: Project;
   @Output() status = new EventEmitter<string>();
-
-  /*
-  testcases = [
-    new Testcase("A0001", 'Windstorm'),
-    new Testcase("A0002", 'Bombasto'),
-    new Testcase("A0003", 'Magneta'),
-    new Testcase("A0004", 'Tornado')
-  ];
-
-  currentTestcase = this.testcases[0];
-  */
+  @Output() area = new EventEmitter<string>();
 
   constructor(
     private router: Router,
@@ -51,19 +39,7 @@ export class ProjectViewComponent implements OnInit{
       
     }
 
-  ngOnInit() {
-    /*
-      this.route.queryParams.subscribe(params => {
-      this.currentTestcaseId = this.route.snapshot.params.id;
-    });
-    */
-
-    //this.testcase$ = this.currentTestcaseId;
-    /*
-    if(this.currentTestcaseId!=null)
-      this.getTestcase(this.currentTestcaseId); 
-    */
-  }
+  ngOnInit() {}
 
   public getTestcase(projectId: string): Subscription {
     
@@ -81,6 +57,9 @@ export class ProjectViewComponent implements OnInit{
 
   public edit(){
     this.status.emit("update");
-    console.log("project view - update");
+  }
+
+  public testcasesList(){
+    this.status.emit("testcaseList");
   }
 }

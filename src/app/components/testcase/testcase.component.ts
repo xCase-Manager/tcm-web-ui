@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { TabsetConfig } from 'ngx-bootstrap/tabs';
 import { Subscription } from 'rxjs';
-
 import {Testcase} from './testcase';
 import { Globals } from '../../globals';
 
@@ -46,8 +45,10 @@ export class TestcaseComponent implements OnInit, AfterViewInit {
       const param = this.route.snapshot.params.id;
       if(param!=null){
         if(param.indexOf("-") < 0){
-          projectId = this.route.snapshot.params.id.substr(0, this.route.snapshot.params.id.indexOf('-'));
+          this.currentProjectId = this.route.snapshot.params.id;
+          projectId = this.currentProjectId;
           testcaseId = null;
+          console.log(" ---- > found project id " + this.currentProjectId);
         }else{
           testcaseId= this.route.snapshot.params.id.substr(this.route.snapshot.params.id.indexOf('-') + 1);
           projectId= this.route.snapshot.params.id.substr(0, this.route.snapshot.params.id.indexOf('-'));
@@ -66,7 +67,7 @@ export class TestcaseComponent implements OnInit, AfterViewInit {
           this.status = "edit";
         }
       }
-      else{
+      else if(projectId==null){
             this.area = "detail";
             this.status = "create";
           }    
