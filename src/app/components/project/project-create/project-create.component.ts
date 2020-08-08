@@ -12,7 +12,6 @@ import { ProjectCreateService } from './project-create.service';
   styleUrls: ['./project-create.component.scss']
 })
 export class ProjectCreateComponent implements OnInit {
-  
   @Input() currentProject: Project;
   @Output() createProject = new EventEmitter<Project>();
 

@@ -1,17 +1,8 @@
 <div class="search-container">
   <div class="row">
     <div class="search-list-head">
-      <!-- <input class="form-control" type="text" name="search" [(ngModel)]="projectFilter.title" placeholder="Search for a test case id or title"> -->
       <input class="form-control" type="text" name="search" (keyup)="searchTerm$.next($event.target.value)" placeholder="Search for a project id or name">
-
       </div>
-        <!--
-          <ul>
-            <li *ngFor="let user of users | filterBy: userFilter">{{ user.name }}</li>
-            
-            <li *ngIf="(users | filterBy: userFilter).length === 0">No matching elements</li>
-          </ul>
-        --> 
         <div class="search-list-body">
           <table class="table">     
             <thead>
@@ -29,7 +20,6 @@
                       <td><a routerLink='../project/{{project.id}}'>{{project.id}}</a></td>
                       <td>{{project.name}}</td>
                     </tr>
-                    <!-- <tr *ngIf="(projects | filterBy: projectFilter).length === 0">No matching test case</tr> -->
                     <tr *ngIf="(reloadedList$ && projects.length === 0)">No matching project</tr>
                     <tr *ngIf="(!reloadedList$ && projects==undefined)"><app-loader></app-loader></tr>                    
                 </tbody>

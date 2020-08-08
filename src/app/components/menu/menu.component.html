@@ -11,12 +11,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="projectcreate" routerLinkActive="active" class="nav-link" href="#">Projects</a>
+        <a routerLink="testcases" routerLinkActive="active" class="nav-link" href="#">Search Testcases</a>
       </li>
-      <li class="nav-item">
-        <a routerLink="cycle" routerLinkActive="active" class="nav-link" href="#">Cycles</a>
-      </li>
-
       <li class="nav-item" class="btn-group" dropdown>      
         <a id="project-button" dropdownToggle aria-controls="project-dropdown" class="nav-link" href="#" onclick="return false;">
           Projects
@@ -28,21 +24,8 @@
           </div>
         </ul>
       </li>
-  
-      <li class="nav-item" class="btn-group" dropdown>      
-          <a id="testcase-button" dropdownToggle aria-controls="testcase-dropdown" class="nav-link" href="#" onclick="return false;">
-            Test Cases
-          </a>
-          <ul id="testcase-dropdown" class="dropdown-menu" role="menu" aria-labelledby="testcase-button">
-            <div>
-              <li role="menuitem"><a routerLink="testcases" routerLinkActive="active" class="nav-link" href="#">Search Test</a></li>
-              <li role="menuitem"><a routerLink="testcase" routerLinkActive="active" class="nav-link" href="#">Create Test</a></li>
-            </div>
-          </ul>
-      </li>
     </ul>
   </div>
-
   <div class="btn-group" dropdown>
       <button id="settings-button" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
               aria-controls="settings-dropdown">
