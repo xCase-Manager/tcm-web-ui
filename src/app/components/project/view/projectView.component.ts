@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, AfterViewChecked, Renderer2, ElementRef} from '@angular/core';
-import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpClientModule, HttpRequest} from '@angular/common/http';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Project } from '../project';
 import { SelectedProject } from '../selectedproject';
 import { ProjectService } from '../project.service';
@@ -14,7 +13,8 @@ interface IProject {
 
 @Component({
   selector: 'app-projectView',
-  templateUrl: './projectView.component.html'
+  templateUrl: './project-view.component.html',
+  styleUrls: ['./project-view.component.scss']
 })
 export class ProjectViewComponent implements OnInit{
 
@@ -34,10 +34,7 @@ export class ProjectViewComponent implements OnInit{
     private route:  ActivatedRoute,
     private http: HttpClient,
     private projectService: ProjectService,
-    //private testcase: Testcase
-    ) { 
-      
-    }
+    ) {}
 
   ngOnInit() {}
 
