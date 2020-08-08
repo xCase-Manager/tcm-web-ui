@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, AfterViewChecked, Renderer2, ElementRef } from '@angular/core';
 import { TestcaseService } from '../testcase.service';
 import { Subject } from 'rxjs/Subject';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'testcaseSearch',
@@ -18,7 +19,6 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
     this.key = key;
     this.reverse = !this.reverse;
   }
-  p: number = 1;
   // search
   searchTerm$ = new Subject<string>();
   // testcase list
@@ -41,7 +41,8 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
 
   constructor(
       private testcaseService: TestcaseService,
-      private renderer: Renderer2, 
+      private renderer: Renderer2,
+      private route: ActivatedRoute, 
       private el: ElementRef
   ) {
 
@@ -60,6 +61,7 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
   }
 
   ngOnInit() {  
+    this.currentProject = this.route.snapshot.queryParamMap.get("projectId")
     this.testcases = undefined;
     this.reloadedList$ = false;
     this.testcaseService.getTestcasesList(this.currentProject).subscribe((data) => {
@@ -84,6 +86,5 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
       this.renderer.setStyle(ele, 'margin-right', 'auto');
       this.renderer.setStyle(ele, 'padding', '0');
     }
-
   }
 }

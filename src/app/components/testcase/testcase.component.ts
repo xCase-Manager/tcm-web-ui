@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, Renderer2, ElementRef} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { TabsetConfig } from 'ngx-bootstrap/tabs';
 import { Subscription } from 'rxjs';
@@ -25,7 +25,6 @@ export class TestcaseComponent implements OnInit, AfterViewInit {
   currentProjectId:string;
  
   constructor(
-    private router: Router,
     private route:  ActivatedRoute,
     private http: HttpClient,
     private renderer: Renderer2, 
