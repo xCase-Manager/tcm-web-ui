@@ -1,18 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup,  FormControl, FormArray, FormBuilder,  Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Testcase } from '../testcase';
 import { SelectedTestcase } from '../selectedtestcase';
 import { TestcaseCreateService } from './testcase-create.service';
-
 
 @Component({
   selector: 'app-testcase-create',
   templateUrl: './testcase-create.component.html',
   styleUrls: ['./testcase-create.component.scss']
 })
-export class TestcaseCreateComponent implements OnInit {
-  
+export class TestcaseCreateComponent implements OnInit { 
   @Input() currentTestcase: Testcase;
   @Input() currentProject: string;
   @Output() createTestcase = new EventEmitter<Testcase>();
@@ -30,7 +28,7 @@ export class TestcaseCreateComponent implements OnInit {
   constructor(
     private testcasecreateservice: TestcaseCreateService, 
     private fb: FormBuilder,
-    private router: Router
+    private route: ActivatedRoute
   ) {
     this.testcaseForm = new FormGroup({
       testcaseTitle: new FormControl("",
@@ -75,7 +73,7 @@ export class TestcaseCreateComponent implements OnInit {
     this.area = "progress";
     var steps = [];
     this.items.controls.map( (v) => {
-                  console.log("pushing .... " + v.get("name").value);
+                  console.log("pushing ... " + v.get("name").value);
                   steps.push({
                     "name": v.get("name").value, 
                     "description": v.get("description").value
@@ -124,6 +122,8 @@ export class TestcaseCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentProject = this.route.snapshot.queryParamMap.get("projectId");
+    console.log(" testcase create -- currentProjectId: " + this.currentProject);
     this.area = "form";
     this.items = this.testcaseForm.get('steps') as FormArray;
     if(this.currentTestcase!= null && this.currentTestcase.id!=""){

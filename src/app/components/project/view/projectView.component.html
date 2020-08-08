@@ -8,5 +8,6 @@
     title:  {{ currentProject.name }}
   </li>
   <button (click)="edit()" type="submit" class="btn btn-primary">Edit</button>
-  <button routerLink="../../testcases" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active" class="nav-link" href="#">View Testcases</button>
+  <button type="submit" class="btn btn-primary" routerLink="../../testcases" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">View Testcases</button>
+  <button type="submit" class="btn btn-primary" routerLink="../../testcase" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">Create Testcase</button>
 </ul>

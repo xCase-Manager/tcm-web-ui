@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewChecked, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewChecked, Renderer2, ElementRef } from '@angular/core';
 import { TestcaseService } from '../testcase.service';
 import { Subject } from 'rxjs/Subject';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
 
-  @Input() currentProject: string;
+  @Input() @Output() currentProject: string;
 
   //sorting
   key: string = 'name';
@@ -42,8 +42,7 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
   constructor(
       private testcaseService: TestcaseService,
       private renderer: Renderer2,
-      private route: ActivatedRoute, 
-      private el: ElementRef
+      private route: ActivatedRoute
   ) {
 
     this.searchTerm$.subscribe({
@@ -61,7 +60,7 @@ export class TestcaseSearchComponent implements OnInit, AfterViewChecked{
   }
 
   ngOnInit() {  
-    this.currentProject = this.route.snapshot.queryParamMap.get("projectId")
+    this.currentProject = this.route.snapshot.queryParamMap.get("projectId");
     this.testcases = undefined;
     this.reloadedList$ = false;
     this.testcaseService.getTestcasesList(this.currentProject).subscribe((data) => {

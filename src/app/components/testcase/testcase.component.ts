@@ -30,9 +30,10 @@ export class TestcaseComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2, 
     private el: ElementRef,
     private globals: Globals
-    ) {}
+  ) {}
 
   ngOnInit() {
+    console.log(" testcase -- currentProjectId: " + this.currentProjectId);
     this.area = "list";
     this.currentTestcase = {id: "", title: "", description: "", projectId: "", steps: []};
     this.status = "edit";
