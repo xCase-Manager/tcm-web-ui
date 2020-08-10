@@ -3,7 +3,8 @@ import { Project } from '../project';
 
 @Component({
   selector: 'app-projectMenu',
-  templateUrl: './projectMenu.component.html'
+  templateUrl: './projectMenu.component.html',
+  styleUrls: ['./project-menu.component.scss']
 })
 export class ProjectMenuComponent implements AfterViewChecked{
 

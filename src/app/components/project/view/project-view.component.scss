@@ -10,3 +10,27 @@
 button{
     margin-right: 0.5em;
 }
+
+.formblock {
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formsection {
+    margin-top: 1.0em;
+}
+
+textarea
+{
+  width:100%;
+}
+
+.nav{
+    width: 100%;
+}
+
+.formblock[_ngcontent-c8]{
+    width: 100%;
+}
