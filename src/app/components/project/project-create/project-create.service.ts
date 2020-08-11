@@ -60,7 +60,7 @@ export class ProjectCreateService {
         callback(<Project>value);
       },
       err => {
-        console.error('test case creation error:', err.message);
+        console.error('project creation error:', err.message);
       }
     );
   }

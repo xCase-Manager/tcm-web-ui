@@ -4,15 +4,15 @@
 <div class="formblock">
   <form>
     <fieldset class="formsection">
-      <legend class="mb-3">Details</legend>
+      <legend class="mb-3"><b>Details</b></legend>
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="project-name">Name</label>
           <input type="text" class="form-control" id="project-name" placeholder=" {{ currentProject.name }}" readonly>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-10 mb-3">
           <label for="project-description">Description</label>
           <textarea type="text" class="form-control" id="project-description" placeholder="{{ currentProject.description }}" readonly></textarea>
         </div>
@@ -25,14 +25,10 @@
     </fieldset>
     
     <fieldset class="formsection">
-      <legend class="mb-3">Test cases</legend>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <button type="submit" class="btn btn-primary" routerLink="../../testcases" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">View Testcases</button>
-        </div>
-        <div class="col-md-6 mb-3">
-          <button type="submit" class="btn btn-primary" routerLink="../../testcase" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">Create Testcase</button>
-        </div>
+      <legend class="mb-3"><b>Test cases</b></legend>
+      <div class="row">      
+        <button type="submit" class="btn btn-secondary" routerLink="../../testcases" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">View Testcases</button>   
+        <button type="submit" class="btn btn-secondary" routerLink="../../testcase" [queryParams]="{projectId:currentProject.id}" routerLinkActive="active">Create Testcase</button>        
       </div>
     </fieldset>
   </form>

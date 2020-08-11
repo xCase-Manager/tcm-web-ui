@@ -15,8 +15,8 @@ export class ProjectCreateComponent implements OnInit {
   @Input() currentProject: Project;
   @Output() createProject = new EventEmitter<Project>();
 
-  title = 'Add Test';
-  projectFormLabel = 'New test'; 
+  title = 'Add project';
+  projectFormLabel = 'New project'; 
   buttonLabel = 'Create';
   projectForm: FormGroup;
   items: FormArray;
@@ -133,9 +133,9 @@ export class ProjectCreateComponent implements OnInit {
     this.items = this.projectForm.get('steps') as FormArray;
 
     if(this.currentProject!= null && this.currentProject.id!=undefined){
-      this.title = 'Update Test';
+      this.title = 'Update project';
       this.buttonLabel = 'Update';
-      this.projectFormLabel = 'Test ' + this.currentProject.id;
+      this.projectFormLabel = 'Project ' + this.currentProject.id;
       this.projectForm.get('projectName').setValue(this.currentProject.name);
       this.projectForm.get('projectDescription').setValue(this.currentProject.description);     
     }
