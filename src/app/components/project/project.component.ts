@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TabsetConfig } from 'ngx-bootstrap/tabs';
 import { Subscription } from 'rxjs';
-
 import {Project} from './project';
 import { Globals } from '../../globals';
 
@@ -29,14 +28,10 @@ export class ProjectComponent implements OnInit, AfterViewInit {
     private route:  ActivatedRoute,
     private http: HttpClient,
     private renderer: Renderer2, 
-    private el: ElementRef,
-    private globals: Globals
+    private el: ElementRef
   ) {}
 
   ngOnInit() {
-
-    this.globals.currentProjectId = "AAA01";
-
     this.area = "list";
     this.currentProject = {id: "", name: "", description: ""};
     this.status = "edit";
@@ -46,25 +41,20 @@ export class ProjectComponent implements OnInit, AfterViewInit {
       if(this.route.snapshot.params.id!=null){
         projectId= this.route.snapshot.params.id;
       }
-      console.log("----- queryparam");
 
       if(projectId!=null){
-        console.log("----- id not null");
         if(this.currentProject.id==''){
-          console.log("----- project details: %s", projectId);
           this.getProject(projectId);
           this.area = "detail";
           this.status = "edit";
         }
         else if(this.currentProject.id!=''){
-          console.log("----- NEW & current project not null");
           this.getProject(projectId);
           this.area = "detail";
           this.status = "edit";
         }
       }
       else{
-            console.log("----- create");
             this.area = "detail";
             this.status = "create";
           }    
@@ -74,11 +64,9 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
 
   public getProject(projectId: string): Subscription {
-    console.log("url: %s", '/api/projects/' + projectId);
     return this.http.get<Project>('/api/projects/' + projectId, {
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
     }).subscribe((data) => {
-          console.log("got project id: %s", data.id);
           this.currentProject = data;
       }, error => {
         this.errorMessageProjectNotFound$ = "Project '" + projectId + "' could not be found";
@@ -86,7 +74,6 @@ export class ProjectComponent implements OnInit, AfterViewInit {
   }
 
   public onCreate(project: Project) {
-    // update successul
     if(project!=null){
       this.currentProject = project;
       this.message = "Update successful";
