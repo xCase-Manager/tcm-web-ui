@@ -2,6 +2,7 @@
   <form [formGroup]="projectForm">
     <div class="form-group row">
       <div>
+        <i class="fas fa-project-diagram"></i>
         <h3>{{projectFormLabel }}</h3>     
         <div class="row">
           <div class="col-md-3 mb-3">
@@ -34,7 +35,7 @@
         <div class="row">
           <div class="col-md-9 mb-3">
             <div class="form-group">
-              <label for="projectDescription">description</label>
+              <label for="projectDescription">Description</label>
               <textarea formControlName="projectDescription" type="text" class="form-control" id="projectDescription" name="projectDescription" aria-describedby="descriptionHelp" placeholder="Enter a test case description"></textarea>
               <small id="descriptionHelp" class="form-text text-muted">Meaningful test case description.</small>
             </div>
