@@ -1,0 +1,3 @@
+<app-projectdetails [currentProject]=myProject (goback)="onGoback($event)" [style.display]="isProjectdetailsVisible ? 'block' : 'none'"></app-projectdetails>
+<app-projectcreate (goback)="onGoback($event)" [style.display]="isProjectcreateVisible ? 'block' : 'none'"></app-projectcreate>
+<app-projectslist (selectedProject)="onSelected($event)" (createProject)="onCreate($event)" [style.display]="isProjectslistVisible ? 'block' : 'none'"></app-projectslist>

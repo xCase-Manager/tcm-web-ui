@@ -1,0 +1,48 @@
+$standard-color: #6c757d;
+
+h2 {
+    color: $standard-color; 
+}
+
+textarea {
+    height: 12em; 
+}
+
+#mainform {
+    margin-top: 1em; 
+    margin-bottom: 0.8em;
+}
+
+#gobackLink{
+    float: left;
+    color: #5585C6;
+}
+
+#projectImg{
+    float: left; 
+    position: relative; 
+    left: 50%;
+    div {
+        float: left; 
+        position: relative; 
+        left: -100%;
+    }
+}
+
+#projectTitle h2{
+    width: 100%;
+    text-align: center;
+}
+
+#formButtons {
+    div {
+        min-width: 110px;
+        padding: 0;
+        margin: 0.1em;
+        button {
+            width: 100%;
+            color: #ffffff;
+            background-color: #5585C6;
+        }
+    }
+}
