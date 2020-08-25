@@ -1,0 +1,52 @@
+$standard-color: #6c757d;
+
+h2 {
+    color: $standard-color; 
+}
+
+textarea {
+    height: 12em; 
+}
+
+#mainform {
+    margin-top: 1em; 
+    margin-bottom: 0.8em;
+}
+
+#projectImg{
+    float: left; 
+    position: relative; 
+    left: 50%;
+    div {
+        float: left; 
+        position: relative; 
+        left: -50%;
+    }
+}
+
+#projectTitle h2{
+    width: 100%;
+    text-align: center;
+}
+
+#createform {
+    margin: auto; 
+}
+
+#formButtons {
+    div {
+        min-width: 110px;
+        padding: 0;
+        margin: 0.1em;
+        button {
+            width: 100%;
+            color: #ffffff;
+            background-color: #5585C6;
+        }
+    }
+}
+
+.error-msg{
+    color: #e21818;
+    font-size: 15px;
+}

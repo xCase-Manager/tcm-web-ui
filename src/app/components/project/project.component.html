@@ -1,24 +1,3 @@
-<ng-container *ngIf="area=='detail'">
-    <div *ngIf="currentProject.id!=''">
-        <div *ngIf="status=='update'" class="formcontainer">
-            <app-project-create (createProject)="onCreate($event)" [currentProject]=currentProject></app-project-create>
-        </div>           
-        <div *ngIf="status=='edit'" class="formcontainer">
-            <app-projectMenu [currentProject]=currentProject (status)="onEdit($event)"></app-projectMenu>
-        </div>  
-    </div> 
-    <div *ngIf="status=='create'" class="formcontainer">
-        <app-project-create (createProject)="onCreate($event)"></app-project-create>
-    </div>  
-    <app-loader *ngIf="(currentProject.id=='') && (status=='edit' || status=='update') "></app-loader>
-</ng-container>
-<ng-container *ngIf="area=='list'">
-    <div #projectSearch>
-        <projectSearch></projectSearch>
-    </div>
-</ng-container>
-<ng-container *ngIf="status=='testcaseList'">
-    <div #testcaseSearch>
-        <testcaseSearch [currentProject]=currentProjectId></testcaseSearch>
-    </div>
-</ng-container>
+<app-projectdetails [currentProject]=myProject (goback)="onGoback($event)" [style.display]="isProjectdetailsVisible ? 'block' : 'none'"></app-projectdetails>
+<app-projectcreate (goback)="onGoback($event)" [style.display]="isProjectcreateVisible ? 'block' : 'none'"></app-projectcreate>
+<app-projectslist (selectedProject)="onSelected($event)" (createProject)="onCreate($event)" [style.display]="isProjectslistVisible ? 'block' : 'none'"></app-projectslist>

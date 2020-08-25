@@ -30,26 +30,12 @@ export class TestcaseViewComponent implements OnInit{
   @Input() currentTestcase: Testcase;
   @Output() status = new EventEmitter<string>();
 
-  /*
-  testcases = [
-    new Testcase("A0001", 'Windstorm'),
-    new Testcase("A0002", 'Bombasto'),
-    new Testcase("A0003", 'Magneta'),
-    new Testcase("A0004", 'Tornado')
-  ];
-
-  currentTestcase = this.testcases[0];
-  */
-
   constructor(
     private router: Router,
     private route:  ActivatedRoute,
     private http: HttpClient,
     private testcaseService: TestcaseService,
-    //private testcase: Testcase
-    ) { 
-      
-    }
+    ) {}
 
   ngOnInit() {
     /*

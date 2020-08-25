@@ -1,28 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li id="reference" class="nav-item">      
-        <a href="#">TCM
-          <span class="row headerApiSwitchDescription">
-              <span class="headerApiSwitchOwner">Support</span>             
-              <span class="headerApiSwitchBullet">•</span>                
-              <span class="headerApiSwitchSubdomain">API</span>           
-          </span>
-        </a>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <p>TCM</p>
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li id="navbar-testcase" class="nav-item">
+        <a routerLink="testcases" routerLinkActive="active" class="nav-link" href="#">Testcases</a>
       </li>
-      <li class="nav-item">
-        <a routerLink="testcases" routerLinkActive="active" class="nav-link" href="#">Search Testcases</a>
-      </li>
-      <li class="nav-item" class="btn-group" dropdown>      
-        <a id="project-button" dropdownToggle aria-controls="project-dropdown" class="nav-link" href="#" onclick="return false;">
-          Projects
-        </a>
-        <ul id="project-dropdown" class="dropdown-menu" role="menu" aria-labelledby="project-button">
-          <div>
-            <li role="menuitem"><a routerLink="projects" routerLinkActive="active" class="nav-link" href="#">Search Project</a></li>
-            <li role="menuitem"><a routerLink="project" routerLinkActive="active" class="nav-link" href="#">Create Project</a></li>
-          </div>
-        </ul>
+      <span style="color: white; margin: auto">•</span>
+      <li id="navbar-project" class="nav-item">
+        <a routerLink="projects" routerLinkActive="active" class="nav-link" href="#">Projects</a>
       </li>
     </ul>
   </div>
