@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-angular-app": {
+    "tcm": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-angular-app",
+            "outputPath": "dist/tcm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-angular-app:build"
+            "browserTarget": "tcm:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-angular-app:build:production"
+              "browserTarget": "tcm:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-angular-app:build"
+            "browserTarget": "tcm:build"
           }
         },
         "test": {
@@ -124,18 +124,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "my-angular-app:serve"
+            "devServerTarget": "tcm:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-angular-app:serve:production"
+              "devServerTarget": "tcm:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "my-angular-app",
+  "defaultProject": "tcm",
   "cli": {
     "analytics": "44da9f80-5f0a-4182-8f14-58cbe8a5e8e5"
   }

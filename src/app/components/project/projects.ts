@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     name: 'Russia',
     icon: 'assets/projects/AI.svg',
     state: 0,
-    description: "test dwefg ewefwefew werwererr  werwerwerewrwer werwebclbkmvmdlfksmdfclkmdkwdm wefsdmflwkemfwedw wefm öwömwm wefergejfwepmfpo description"
+    description: "test description"
   },
   {
     id: "AAA02",
