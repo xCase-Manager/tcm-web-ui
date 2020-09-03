@@ -11,6 +11,7 @@ import {Project} from '../project';
 export class ProjectDetailsComponent implements OnInit {
   @Input() currentProject: Project;
   @Output() goback = new EventEmitter<boolean>();
+  @Output() goTestcasesList = new EventEmitter<Project>();
 
   edit = true;
   buttonLabel$ = "edit";
@@ -67,5 +68,9 @@ export class ProjectDetailsComponent implements OnInit {
 
   gotoProjectList(){
     this.goback.emit(true); 
+  }
+
+  gotoTestcasesList(){
+    this.goTestcasesList.emit(this.currentProject); 
   }
 }
