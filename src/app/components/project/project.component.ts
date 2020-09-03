@@ -11,6 +11,7 @@ export class ProjectComponent implements OnInit {
   isProjectslistVisible = true;
   isProjectdetailsVisible = false;
   isProjectcreateVisible = false;
+  isTestcaseslistVisible = false;
  
   constructor(
     private route: ActivatedRoute,
@@ -19,16 +20,13 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {}
 
   public onSelected(project: Project) {
-      console.log(" selected project: " + project.name)
       this.myProject = project;
       this.isProjectslistVisible = false;
       this.isProjectdetailsVisible = true;
-      this.isProjectcreateVisible = false;
   }
 
   public onCreate(refresh: boolean) {
     this.isProjectslistVisible = false;
-    this.isProjectdetailsVisible = false;
     this.isProjectcreateVisible = true;
   }
 
@@ -36,5 +34,10 @@ export class ProjectComponent implements OnInit {
     this.isProjectslistVisible = true;
     this.isProjectdetailsVisible = false;
     this.isProjectcreateVisible = false;
+  }
+
+  public onGoTestcasesList(project: Project) {
+    this.isProjectdetailsVisible = false;
+    this.isTestcaseslistVisible = true;
   }
 }
