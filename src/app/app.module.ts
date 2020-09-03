@@ -13,6 +13,7 @@ import { ProjectComponent } from './components/project/project.component';
 import { ProjectCreateComponent } from './components/project/projectCreate/project-create.component';
 import { ProjectDetailsComponent } from './components/project/projectDetails/project-details.component';
 import { ProjectsListComponent } from './components/project/projectsList/projects-list.component';
+import { TestcasesListComponent } from './components/project/testcasesList/testcases-list.component';
 import { ProjectService } from './components/project/project.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
 
@@ -25,7 +26,8 @@ import { NgbdSortableHeader } from './components/project/projectsList/sortable.d
     ProjectComponent,
     ProjectDetailsComponent,
     ProjectCreateComponent,
-    ProjectsListComponent
+    ProjectsListComponent,
+    TestcasesListComponent
   ],
   imports: [
     BrowserModule,
