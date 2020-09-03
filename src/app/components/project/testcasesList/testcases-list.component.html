@@ -1,0 +1,54 @@
+<div class="py-5 text-center">
+  <img class="d-block mx-auto mb-4" src="assets/projects/project.svg" alt="" width="72" height="72">
+  <h2>Test cases</h2>
+</div>
+<form>
+  <div class="form-group form-inline">
+    <div class="row" style="width: 100%;">
+      <div style="width: 75%;">
+        <input style="text-align:left;" class="form-control ml-2" type="text" name="searchTerm" placeholder="Search" [(ngModel)]="service.searchTerm"/>
+        <span style="text-align:left;" class="ml-3" *ngIf="service.loading$ | async">Loading ...</span>
+      </div>
+      <div style="width: 25%;">
+        <div id="addLink" (click)="create()"><i class="fas fa-plus-circle fa-2x"></i></div>  
+      </div>  
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="name" (sort)="onSort($event)">Testcase</th>
+        <th scope="col" sortable="description" (sort)="onSort($event)">Description</th>
+        <th scope="col" sortable="state" (sort)="onSort($event)">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects$ | async">
+        <th scope="row">
+          <a (click)="selectedItem(project)">{{project.id}}</a>
+        </th>
+        <td>
+          <img [src]="project.icon" class="mr-2" style="width: 20px">
+          <ngb-highlight [result]="project.name" [term]="service.searchTerm"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="project.description" [term]="service.searchTerm"></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight [result]="project.state | number" [term]="service.searchTerm"></ngb-highlight>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+    </ngb-pagination>
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="5">5 per page</option>
+      <option [ngValue]="10">10 per page</option>
+      <option [ngValue]="20">20 per page</option>
+    </select>
+  </div>
+</form>
