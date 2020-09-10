@@ -1,5 +1,5 @@
 <div class="py-5 text-center">
-  <img class="d-block mx-auto mb-4" src="assets/projects/project.svg" alt="" width="72" height="72">
+  <img class="d-block mx-auto mb-4" src="assets/testcases/testcase.svg" alt="" width="72" height="72">
   <h2>Test cases</h2>
 </div>
 <form>
@@ -24,19 +24,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let project of projects$ | async">
+      <tr *ngFor="let testcase of testcases$ | async">
         <th scope="row">
-          <a (click)="selectedItem(project)">{{project.id}}</a>
+          <a (click)="selectedItem(testcase)">{{testcase.id}}</a>
         </th>
         <td>
-          <img [src]="project.icon" class="mr-2" style="width: 20px">
-          <ngb-highlight [result]="project.name" [term]="service.searchTerm"></ngb-highlight>
+          <ngb-highlight [result]="testcase.name" [term]="service.searchTerm"></ngb-highlight>
         </td>
         <td>
-          <ngb-highlight [result]="project.description" [term]="service.searchTerm"></ngb-highlight>
+          <ngb-highlight [result]="testcase.description" [term]="service.searchTerm"></ngb-highlight>
         </td>
         <td>
-          <ngb-highlight [result]="project.state | number" [term]="service.searchTerm"></ngb-highlight>
+          <ngb-highlight [result]="testcase.state | number" [term]="service.searchTerm"></ngb-highlight>
         </td>
       </tr>
     </tbody>
