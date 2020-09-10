@@ -2,7 +2,7 @@ import {Component, QueryList, ViewChildren, Output, EventEmitter} from '@angular
 import {DecimalPipe} from '@angular/common';
 import {Observable} from 'rxjs';
 
-import {Project} from '../project';
+import {Testcase} from '../testcase';
 import {TestcaseService} from '../testcase.service';
 import {NgbdSortableHeader, SortEvent} from './sortable.directive';
 
@@ -13,19 +13,19 @@ import {NgbdSortableHeader, SortEvent} from './sortable.directive';
   providers: [TestcaseService, DecimalPipe]
 })
 export class TestcasesListComponent  {
-  @Output() selectedTestcase = new EventEmitter<Project>();
+  @Output() selectedTestcase = new EventEmitter<Testcase>();
   @Output() createTestcase = new EventEmitter<boolean>();
 
   page = 1;
   pageSize =10;
-  projects$: Observable<Project[]>;
+  testcases$: Observable<Testcase[]>;
   total$: Observable<number>; 
 
   @ViewChildren(NgbdSortableHeader) 
   headers: QueryList<NgbdSortableHeader>;
   
   constructor(public service: TestcaseService) {
-    this.projects$ = service.projects$;
+    this.testcases$ = service.testcases$;
     this.total$ = service.total$;
   }
 
@@ -39,8 +39,8 @@ export class TestcasesListComponent  {
     this.service.sortDirection = direction;
   }
 
-  selectedItem(project: Project){
-    this.selectedTestcase.emit(project); 
+  selectedItem(testcase: Testcase){
+    this.selectedTestcase.emit(testcase); 
   }
 
   create(){
