@@ -3,14 +3,14 @@ import {DecimalPipe} from '@angular/common';
 import {Observable} from 'rxjs';
 
 import {Project} from '../project';
-import {ProjectService} from '../project.service';
+import {TestcaseService} from '../testcase.service';
 import {NgbdSortableHeader, SortEvent} from './sortable.directive';
 
 @Component({
   selector: 'app-testcaseslist',
   templateUrl: './testcases-list.component.html',
   styleUrls: ['./testcases-list.component.scss'],
-  providers: [ProjectService, DecimalPipe]
+  providers: [TestcaseService, DecimalPipe]
 })
 export class TestcasesListComponent  {
   @Output() selectedTestcase = new EventEmitter<Project>();
@@ -24,7 +24,7 @@ export class TestcasesListComponent  {
   @ViewChildren(NgbdSortableHeader) 
   headers: QueryList<NgbdSortableHeader>;
   
-  constructor(public service: ProjectService) {
+  constructor(public service: TestcaseService) {
     this.projects$ = service.projects$;
     this.total$ = service.total$;
   }

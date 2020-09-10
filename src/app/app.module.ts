@@ -15,7 +15,9 @@ import { ProjectDetailsComponent } from './components/project/projectDetails/pro
 import { ProjectsListComponent } from './components/project/projectsList/projects-list.component';
 import { TestcasesListComponent } from './components/project/testcasesList/testcases-list.component';
 import { ProjectService } from './components/project/project.service';
+import { TestcaseService } from './components/project/testcase.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { NgbdSortableHeader } from './components/project/projectsList/sortable.d
   ],
   exports: [RouterModule],
   providers: [
-    ProjectService
+    ProjectService, TestcaseService
   ],
   bootstrap: [AppComponent]
 })
