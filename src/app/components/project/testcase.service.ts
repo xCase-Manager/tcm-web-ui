@@ -2,14 +2,14 @@ import {Injectable, PipeTransform} from '@angular/core';
 
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 
-import {Project} from './project';
-import {PROJECTS} from './projects';
+import {Testcase} from './testcase';
+import {TESTCASES} from './testcases';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
-import {SortColumn, SortDirection} from './projectsList/sortable.directive';
+import {SortColumn, SortDirection} from './testcasesList/sortable.directive';
 
 interface SearchResult {
-  projects: Project[];
+  testcases: Testcase[];
   total: number;
 }
 
@@ -23,28 +23,28 @@ interface State {
 
 const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
-function sort(projects: Project[], column: SortColumn, direction: string): Project[] {
+function sort(testcases: Testcase[], column: SortColumn, direction: string): Testcase[] {
   if (direction === '' || column === '') {
-    return projects;
+    return testcases;
   } else {
-    return [...projects].sort((a, b) => {
+    return [...testcases].sort((a, b) => {
       const res = compare(a[column], b[column]);
       return direction === 'asc' ? res : -res;
     });
   }
 }
 
-function matches(project: Project, term: string, pipe: PipeTransform) {
-  return project.name.toLowerCase().includes(term.toLowerCase())
-    || project.description.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(project.state).includes(term);
+function matches(testcase: Testcase, term: string, pipe: PipeTransform) {
+  return testcase.name.toLowerCase().includes(term.toLowerCase())
+    || testcase.description.toLowerCase().includes(term.toLowerCase())
+    || pipe.transform(testcase.state).includes(term);
 }
 
 @Injectable({providedIn: 'root'})
 export class TestcaseService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
-  private _projects$ = new BehaviorSubject<Project[]>([]);
+  private _testcase$ = new BehaviorSubject<Testcase[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
 
   private _state: State = {
@@ -63,13 +63,13 @@ export class TestcaseService {
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
-      this._projects$.next(result.projects);
+      this._testcase$.next(result.testcases);
       this._total$.next(result.total);
     });
     this._search$.next();
   }
 
-  get projects$() { return this._projects$.asObservable(); }
+  get testcases$() { return this._testcase$.asObservable(); }
   get total$() { return this._total$.asObservable(); }
   get loading$() { return this._loading$.asObservable(); }
   get page() { return this._state.page; }
@@ -89,25 +89,13 @@ export class TestcaseService {
 
   private _search(): Observable<SearchResult> {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
-
     // 1. sort
-    let projects = sort(PROJECTS, sortColumn, sortDirection);
-
-    console.log("projects: --> " + projects);
-    console.log(Object.keys(projects[1]));
-    console.log("  - - - -- - - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(projects[1]));
-    console.log("  - - - - pipe- - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(this.pipe));
-    console.log("  - - - - searchTerm- - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(searchTerm));
-
+    let testcases = sort(TESTCASES, sortColumn, sortDirection);
     // 2. filter
-    projects = projects.filter(project => matches(project, searchTerm, this.pipe));
-    const total = projects.length;
-
+    testcases = testcases.filter(testcase => matches(testcase, searchTerm, this.pipe));
+    const total = testcases.length;
     // 3. paginate
-    projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({projects, total});
+    testcases = testcases.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    return of({testcases, total});
   }
 }
