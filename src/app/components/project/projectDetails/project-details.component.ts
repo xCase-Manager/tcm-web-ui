@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {Project} from '../project';
@@ -18,6 +18,9 @@ export class ProjectDetailsComponent implements OnInit {
   nameControl: FormControl = new FormControl('', Validators.minLength(2));
   statusControl: FormControl = new FormControl('', Validators.minLength(2));
   descriptionControl: FormControl = new FormControl('', Validators.minLength(2));
+  project = null;
+
+  @ViewChild('logo') logoImage: ElementRef;
   
   constructor(
     private router: Router,
@@ -34,6 +37,7 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.currentProject) {
       this.nameControl.setValue(this.currentProject.name);
       this.statusControl.setValue("Closed");
+      this.logoImage.nativeElement.setAttribute('src',this.currentProject.icon);
     }  
   }
 
