@@ -15,6 +15,7 @@ import {NgbdSortableHeader, SortEvent} from './sortable.directive';
 export class TestcasesListComponent  {
   @Output() selectedTestcase = new EventEmitter<Testcase>();
   @Output() createTestcase = new EventEmitter<boolean>();
+  @Output() goback = new EventEmitter<boolean>();
 
   page = 1;
   pageSize =10;
@@ -45,5 +46,9 @@ export class TestcasesListComponent  {
 
   create(){
     this.createTestcase.emit(true); 
+  }
+
+  gotoProjectDetails(){
+    this.goback.emit(true); 
   }
 }

@@ -40,4 +40,9 @@ export class ProjectComponent implements OnInit {
     this.isProjectdetailsVisible = false;
     this.isTestcaseslistVisible = true;
   }
+
+  public onGoBackProjectDetails(refresh: boolean) {
+    this.isProjectdetailsVisible = true;
+    this.isTestcaseslistVisible = false;
+  }
 }
