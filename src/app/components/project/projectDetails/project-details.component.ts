@@ -1,6 +1,5 @@
 import {Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
 import {Project} from '../project';
 
 @Component({
@@ -12,6 +11,7 @@ export class ProjectDetailsComponent implements OnInit {
   @Input() currentProject: Project;
   @Output() goback = new EventEmitter<boolean>();
   @Output() goTestcasesList = new EventEmitter<Project>();
+  @ViewChild('logo') logoImage: ElementRef;
 
   edit = true;
   buttonLabel$ = "edit";
@@ -19,14 +19,8 @@ export class ProjectDetailsComponent implements OnInit {
   statusControl: FormControl = new FormControl('', Validators.minLength(2));
   descriptionControl: FormControl = new FormControl('', Validators.minLength(2));
   project = null;
-
-  @ViewChild('logo') logoImage: ElementRef;
   
-  constructor(
-    private router: Router,
-  ){
-    console.log("editform: " + this.currentProject)
-  }
+  constructor(){}
 
   ngOnInit(): void {
     this.edit = true;

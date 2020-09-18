@@ -17,14 +17,13 @@ export class TestcasesListComponent  {
   @Output() selectedTestcase = new EventEmitter<Testcase>();
   @Output() createTestcase = new EventEmitter<boolean>();
   @Output() goback = new EventEmitter<boolean>();
+  @ViewChild('logo') logoImage: ElementRef;
+  @ViewChildren(NgbdSortableHeader) 
 
   page = 1;
   pageSize =10;
   testcases$: Observable<Testcase[]>;
   total$: Observable<number>; 
-
-  @ViewChild('logo') logoImage: ElementRef;
-  @ViewChildren(NgbdSortableHeader) 
   headers: QueryList<NgbdSortableHeader>;
   
   constructor(public service: TestcaseService) {
