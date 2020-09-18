@@ -1,16 +1,19 @@
-<div class="py-5 text-center">
-  <div id="projectImg">
-    <div>
-      <img #logo src="" alt="" width="72" height="72">
+<div id="mainform">
+  <div class="row">
+    <div id="gobackLink">
+      <a (click)="gotoProjectDetails()">
+        <i class="fas fa-arrow-circle-left fa-2x"></i>   
+      </a>
+    </div>
+    <div id="projectImg">
+      <div>
+        <img #logo src="" alt="" width="72" height="72">
+      </div>
     </div>
   </div>
-  <!-- <img class="d-block mx-auto mb-4" src="assets/testcases/testcase.svg" alt="" width="72" height="72"> -->
-  <h2>Test cases</h2>
-</div>
-<div id="gobackLink">
-  <a (click)="gotoProjectDetails()">
-    <i class="fas fa-arrow-circle-left fa-2x"></i>   
-  </a>
+  <div id="projectTitle" class="row">
+    <h2>Testcases list</h2>
+  </div>
 </div>
 <form>
   <div class="form-group form-inline">
