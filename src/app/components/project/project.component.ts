@@ -7,7 +7,7 @@ import {Project} from './project';
   templateUrl: './project.component.html'
 })
 export class ProjectComponent implements OnInit {
-  myProject:Project;
+  activeProject:Project;
   isProjectslistVisible = true;
   isProjectdetailsVisible = false;
   isProjectcreateVisible = false;
@@ -20,7 +20,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {}
 
   public onSelected(project: Project) {
-      this.myProject = project;
+      this.activeProject = project;
       this.isProjectslistVisible = false;
       this.isProjectdetailsVisible = true;
   }
