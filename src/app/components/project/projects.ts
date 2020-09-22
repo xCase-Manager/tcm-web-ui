@@ -12,21 +12,21 @@ export const PROJECTS: Project[] = [
     id: "AAA02",
     name: 'France',
     icon: 'assets/projects/mechanics.svg',
-    state: 0,
+    state: 1,
     description: "test description"
   },
   {
     id: "AAA03",
     name: 'Germany',
     icon: 'assets/projects/AI.svg',
-    state: 0,
+    state: 2,
     description: "test description"
   },
   {
     id: "BBB01",
     name: 'Portugal',
     icon: 'assets/projects/analysis.svg',
-    state: 0,
+    state: 3,
     description: "test description"
   },
   {
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     id: "CCC01",
     name: 'Vietnam',
     icon: 'assets/projects/mechanics.svg',
-    state: 0,
+    state: 1,
     description: "test description"
   },
   {
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "DDD02",
-    name: 'United States',
+    name: 'United states',
     icon: 'assets/projects/mechanics.svg',
     state: 0,
     description: "test description"

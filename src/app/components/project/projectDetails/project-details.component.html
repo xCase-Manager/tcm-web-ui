@@ -63,10 +63,10 @@
             <label for="status">Status</label>
             <select [formControl]="statusControl" class="custom-select d-block w-100" id="status" required>
               <option value="">Choose...</option>
-              <option>Open</option>
-              <option>In description</option>
-              <option>In progress</option>
-              <option>Closed</option>
+              <option value="0">Open</option>
+              <option value="1">In description</option>
+              <option value="2">In progress</option>
+              <option value="3">Closed</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid status.

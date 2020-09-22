@@ -93,15 +93,6 @@ export class ProjectService {
     // 1. sort
     let projects = sort(PROJECTS, sortColumn, sortDirection);
 
-    console.log("projects: --> " + projects);
-    console.log(Object.keys(projects[1]));
-    console.log("  - - - -- - - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(projects[1]));
-    console.log("  - - - - pipe- - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(this.pipe));
-    console.log("  - - - - searchTerm- - - -- - - - - ");
-    console.log(Object.getOwnPropertyNames(searchTerm));
-
     // 2. filter
     projects = projects.filter(project => matches(project, searchTerm, this.pipe));
     const total = projects.length;
