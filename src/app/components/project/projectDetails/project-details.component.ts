@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Renderer2, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {Project} from '../project';
 
@@ -12,6 +12,7 @@ export class ProjectDetailsComponent implements OnInit {
   @Output() goback = new EventEmitter<boolean>();
   @Output() goTestcasesList = new EventEmitter<Project>();
   @ViewChild('logo') logoImage: ElementRef;
+  @ViewChild('projectTitle') projectTitle: ElementRef;
 
   edit = true;
   buttonLabel$ = "edit";
@@ -20,7 +21,7 @@ export class ProjectDetailsComponent implements OnInit {
   descriptionControl: FormControl = new FormControl('', Validators.minLength(2));
   project = null;
   
-  constructor(){}
+  constructor(private renderer: Renderer2){}
 
   ngOnInit(): void {
     this.edit = true;
@@ -29,7 +30,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   ngOnChanges() {
     if (this.currentProject) {
-      this.nameControl.setValue(this.currentProject.name);
+      this.renderer.setProperty(this.projectTitle.nativeElement.children[0], 
+        'innerHTML', "project " + this.currentProject.name);
       this.statusControl.setValue("Closed");
       this.logoImage.nativeElement.setAttribute('src',this.currentProject.icon);
     }  
