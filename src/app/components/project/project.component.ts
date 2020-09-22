@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Project} from './project';
+import {Testcase} from './testcase';
 
 @Component({
   selector: 'app-project',
@@ -8,10 +9,12 @@ import {Project} from './project';
 })
 export class ProjectComponent implements OnInit {
   activeProject:Project;
+  activeTestcase:Testcase;
   isProjectslistVisible = true;
   isProjectdetailsVisible = false;
   isProjectcreateVisible = false;
   isTestcaseslistVisible = false;
+  isTestcasedetailsVisible = false;
  
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +27,12 @@ export class ProjectComponent implements OnInit {
       this.isProjectslistVisible = false;
       this.isProjectdetailsVisible = true;
   }
+
+  public onSelectedTestcase(testcase: Testcase) {
+    this.activeTestcase = testcase;
+    this.isTestcaseslistVisible = false;
+    this.isTestcasedetailsVisible = true;
+}
 
   public onCreate(refresh: boolean) {
     this.isProjectslistVisible = false;

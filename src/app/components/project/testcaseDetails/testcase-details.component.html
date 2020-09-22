@@ -1,0 +1,59 @@
+
+<div id="mainform">
+  <div class="row">
+    <div id="gobackLink">
+      <a (click)="gotoTestcaseList()">
+        <i class="fas fa-arrow-circle-left fa-2x"></i>   
+      </a>
+    </div>
+    <div id="projectImg">
+      <div>
+        <img #logo src="" alt="" width="72" height="72">
+      </div>
+    </div>
+  </div>
+  <div id="testcaseTitle" #testcaseTitle class="row">
+    <h2></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 order-md-1">
+    <form class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-7 mb-3">
+          <label for="name">Name</label>
+          <input [formControl]="nameControl" type="text" class="form-control" id="name" placeholder="testcase name" value="" required>
+          <div class="invalid-feedback">
+            Please give a valid Name.
+          </div>
+        </div>
+        <div class="col-md-5 mb-3">
+            <label for="status">Status</label>
+            <select [formControl]="statusControl" class="custom-select d-block w-100" id="status" required>
+              <option value="">Choose...</option>
+              <option>Open</option>
+              <option>In description</option>
+              <option>In progress</option>
+              <option>Closed</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid status.
+            </div>
+        </div>
+      </div>
+      <div class="mb-3">
+          <label for="description">Description <span class="text-muted">(Optional)</span></label>
+          <textarea [formControl]="descriptionControl" type="text" class="form-control" id="description" placeholder="testcase description"></textarea>
+      </div>    
+      <hr class="mb-4">
+      <div id="formButtons" class="row">
+        <div class="col-md-1 mb-1">
+          <button (click)="switchEdit()" class="btn btn-secondary" type="submit">{{ buttonLabel$ }}</button>
+        </div>
+        <div class="col-md-1 mb-1">
+          <button (click)="cancel()" class="btn btn-secondary" type="submit">cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

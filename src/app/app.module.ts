@@ -14,6 +14,7 @@ import { ProjectCreateComponent } from './components/project/projectCreate/proje
 import { ProjectDetailsComponent } from './components/project/projectDetails/project-details.component';
 import { ProjectsListComponent } from './components/project/projectsList/projects-list.component';
 import { TestcasesListComponent } from './components/project/testcasesList/testcases-list.component';
+import { TestcaseDetailsComponent } from './components/project/testcaseDetails/testcase-details.component';
 import { ProjectService } from './components/project/project.service';
 import { TestcaseService } from './components/project/testcase.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
@@ -29,7 +30,8 @@ import { NgbdSortableHeader } from './components/project/projectsList/sortable.d
     ProjectDetailsComponent,
     ProjectCreateComponent,
     ProjectsListComponent,
-    TestcasesListComponent
+    TestcasesListComponent,
+    TestcaseDetailsComponent
   ],
   imports: [
     BrowserModule,

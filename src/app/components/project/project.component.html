@@ -1,4 +1,5 @@
 <app-projectdetails [currentProject]=activeProject (goback)="onGoback($event)" (goTestcasesList)="onGoTestcasesList($event)" [style.display]="isProjectdetailsVisible ? 'block' : 'none'"></app-projectdetails>
 <app-projectcreate (goback)="onGoback($event)" [style.display]="isProjectcreateVisible ? 'block' : 'none'"></app-projectcreate>
 <app-projectslist (selectedProject)="onSelected($event)" (createProject)="onCreate($event)" [style.display]="isProjectslistVisible ? 'block' : 'none'"></app-projectslist>
-<app-testcaseslist [currentProject]=activeProject (goback)="onGoBackProjectDetails($event)" (selectedTescase)="onSelected($event)" (createTescase)="onCreate($event)" [style.display]="isTestcaseslistVisible ? 'block' : 'none'"></app-testcaseslist>
+<app-testcaseslist (selectedTestcase)="onSelectedTestcase($event)" [currentProject]=activeProject (goback)="onGoBackProjectDetails($event)" (selectedTescase)="onSelected($event)" (createTescase)="onCreate($event)" [style.display]="isTestcaseslistVisible ? 'block' : 'none'"></app-testcaseslist>
+<app-testcasedetails [currentTestcase]=activeTestcase (goback)="onGoback($event)"></app-testcasedetails>
