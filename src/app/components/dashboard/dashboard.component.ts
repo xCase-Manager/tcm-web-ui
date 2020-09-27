@@ -14,16 +14,14 @@ export class DashboardComponent {
   chartType: ChartType = 'doughnut';
 
   constructor() {
-    var projects = TESTCASES.map(item => item.projectId).filter((v, i, a) => a.indexOf(v) === i);
-    projects.forEach(unique => {
-      var countOccurrences = TESTCASES.reduce((a, v) => (v.projectId === unique ? a + 1 : a), 0);
-      this.chartLabels.push(unique);
+    var projects = TESTCASES.map(item => 
+      item.projectId).filter((v, i, a) => a.indexOf(v) === i);
+  
+    projects.forEach(project => {
+      const countOccurrences = TESTCASES.reduce((a, v) => 
+        (v.projectId === project ? a + 1 : a), 0);
+      this.chartLabels.push(project);
       this.chartData.push(countOccurrences);
-    });
-      
+    });     
   }
-}
-
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
 }
