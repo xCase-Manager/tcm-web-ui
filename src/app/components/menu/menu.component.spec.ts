@@ -20,7 +20,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(MenuComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('#navbar-testcase a').textContent).toContain('Testcases');
+    expect(compiled.querySelector('#navbar-dashboard a').textContent).toContain('Dashboard');
     expect(compiled.querySelector('#navbar-project a').textContent).toContain('Projects');
   });
 });
