@@ -3,9 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { appRoutes } from './routerConfig';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,7 +17,8 @@ import { TestcaseDetailsComponent } from './components/project/testcaseDetails/t
 import { ProjectService } from './components/project/project.service';
 import { TestcaseService } from './components/project/testcase.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { appRoutes } from './routerConfig';
 
 
 @NgModule({
@@ -41,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    ChartsModule,
     NgbModule
   ],
   exports: [RouterModule],
