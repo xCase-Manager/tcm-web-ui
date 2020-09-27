@@ -18,6 +18,7 @@ import { TestcaseDetailsComponent } from './components/project/testcaseDetails/t
 import { ProjectService } from './components/project/project.service';
 import { TestcaseService } from './components/project/testcase.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NgbdSortableHeader } from './components/project/projectsList/sortable.d
     ProjectCreateComponent,
     ProjectsListComponent,
     TestcasesListComponent,
-    TestcaseDetailsComponent
+    TestcaseDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
