@@ -3,4 +3,5 @@ export interface Testcase {
   name: string;
   state: number;
   description: string;
+  projectId: string;
 }
