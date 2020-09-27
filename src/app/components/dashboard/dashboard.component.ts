@@ -14,8 +14,8 @@ export class DashboardComponent {
   chartType: ChartType = 'doughnut';
 
   constructor() {
-    var projects = TESTCASES.map(item => 
-      item.projectId).filter((v, i, a) => a.indexOf(v) === i);
+    var projects = TESTCASES.map(item => item.projectId)
+      .filter((v, i, a) => a.indexOf(v) === i);
   
     projects.forEach(project => {
       const countOccurrences = TESTCASES.reduce((a, v) => 
