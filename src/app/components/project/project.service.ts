@@ -1,12 +1,11 @@
 import {Injectable, PipeTransform} from '@angular/core';
-
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-
 import {Project} from './project';
 import {PROJECTS} from './projects';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './projectsList/sortable.directive';
+import { TCMService } from './tcm.service';
 
 interface SearchResult {
   projects: Project[];
@@ -55,7 +54,8 @@ export class ProjectService {
     sortDirection: ''
   };
 
-  constructor(private pipe: DecimalPipe) {
+  constructor(private pipe: DecimalPipe, 
+    private tcmService: TCMService) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -89,16 +89,19 @@ export class ProjectService {
 
   private _search(): Observable<SearchResult> {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
-
-    // 1. sort
-    let projects = sort(PROJECTS, sortColumn, sortDirection);
-
-    // 2. filter
-    projects = projects.filter(project => matches(project, searchTerm, this.pipe));
-    const total = projects.length;
-
-    // 3. paginate
-    projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({projects, total});
+    this.tcmService.getProjects()
+      .subscribe(tcmProjects => {
+          console.log(tcmProjects);
+          // 1. sort
+          let projects = sort(tcmProjects, sortColumn, sortDirection);
+          // 2. filter
+          projects = projects.filter(project => matches(project, searchTerm, this.pipe));
+          const total = projects.length;
+          // 3. paginate
+          projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+          return of({projects, total});
+        }      
+      );
+    return null; 
   }
 }
