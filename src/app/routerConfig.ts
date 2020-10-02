@@ -8,5 +8,8 @@ export const appRoutes: Routes = [
   },
   { path: 'projects',
     component: ProjectComponent
+  },
+  { path: '',
+    component: DashboardComponent
   }
 ];
