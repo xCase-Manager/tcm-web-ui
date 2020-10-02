@@ -1,7 +1,5 @@
 import {Injectable, PipeTransform} from '@angular/core';
-
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-
 import {Testcase} from './testcase';
 import {TESTCASES} from './testcases';
 import {DecimalPipe} from '@angular/common';

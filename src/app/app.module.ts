@@ -5,6 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -16,6 +17,9 @@ import { TestcasesListComponent } from './components/project/testcasesList/testc
 import { TestcaseDetailsComponent } from './components/project/testcaseDetails/testcase-details.component';
 import { ProjectService } from './components/project/project.service';
 import { TestcaseService } from './components/project/testcase.service';
+import { HttpErrorHandler } from './components/project/http-error-handler.service';
+import { MessageService } from './components/project/message.service';
+import { TCMService } from './components/project/tcm.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { appRoutes } from './routerConfig';
@@ -37,6 +41,7 @@ import { appRoutes } from './routerConfig';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
@@ -46,7 +51,11 @@ import { appRoutes } from './routerConfig';
   ],
   exports: [RouterModule],
   providers: [
-    ProjectService, TestcaseService
+    ProjectService, 
+    TestcaseService,
+    TCMService,
+    HttpErrorHandler,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
