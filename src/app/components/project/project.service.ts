@@ -1,7 +1,6 @@
 import {Injectable, PipeTransform} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Project} from './project';
-import {PROJECTS} from './projects';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './projectsList/sortable.directive';
@@ -89,19 +88,24 @@ export class ProjectService {
 
   private _search(): Observable<SearchResult> {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
-    this.tcmService.getProjects()
-      .subscribe(tcmProjects => {
-          console.log(tcmProjects);
-          // 1. sort
-          let projects = sort(tcmProjects, sortColumn, sortDirection);
-          // 2. filter
-          projects = projects.filter(project => matches(project, searchTerm, this.pipe));
-          const total = projects.length;
-          // 3. paginate
-          projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-          return of({projects, total});
-        }      
-      );
-    return null; 
+
+    let tcmProjects:Project[] = [];
+    this.getProjectsList(tcmProjects);
+
+    console.log(tcmProjects);
+    // 1. sort
+    let projects = sort(tcmProjects, sortColumn, sortDirection);
+    // 2. filter
+    projects = projects.filter(project => matches(project, searchTerm, this.pipe));
+    const total = projects.length;
+    // 3. paginate
+    projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    return of({projects, total});  
+  }
+
+  public getProjectsList(projects) {
+    this.tcmService.getProjects().subscribe(
+      projectsList => projects = projectsList
+    )
   }
 }
