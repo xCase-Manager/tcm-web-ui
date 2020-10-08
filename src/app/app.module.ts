@@ -19,7 +19,6 @@ import { ProjectService } from './components/project/project.service';
 import { TestcaseService } from './components/project/testcase.service';
 import { HttpErrorHandler } from './components/project/http-error-handler.service';
 import { MessageService } from './components/project/message.service';
-import { TCMService } from './components/project/tcm.service';
 import { NgbdSortableHeader } from './components/project/projectsList/sortable.directive';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { appRoutes } from './routerConfig';
@@ -53,7 +52,6 @@ import { appRoutes } from './routerConfig';
   providers: [
     ProjectService, 
     TestcaseService,
-    TCMService,
     HttpErrorHandler,
     MessageService
   ],
