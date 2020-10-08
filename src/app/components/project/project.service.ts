@@ -2,13 +2,37 @@ import {Injectable, PipeTransform} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Project} from './project';
 import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
+import {debounceTime, delay, switchMap, tap, map, catchError} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './projectsList/sortable.directive';
-import { TCMService } from './tcm.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpErrorHandler, HandleError } from './http-error-handler.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
+
+class Item implements Project {
+  constructor(
+    public id: string,
+    public name: string,
+    public description: string,
+    public icon: string,
+    public state: number
+  ) {}
+}
 
 interface SearchResult {
   projects: Project[];
   total: number;
+}
+
+class Result implements SearchResult {
+  constructor(
+    public projects: Project[],
+    public total: number
+  ){}
 }
 
 interface State {
@@ -44,6 +68,8 @@ export class ProjectService {
   private _search$ = new Subject<void>();
   private _projects$ = new BehaviorSubject<Project[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
+  projectsUrl = 'http://localhost:3000/api/projects';
+  private handleError: HandleError;
 
   private _state: State = {
     page: 1,
@@ -53,8 +79,11 @@ export class ProjectService {
     sortDirection: ''
   };
 
-  constructor(private pipe: DecimalPipe, 
-    private tcmService: TCMService) {
+  constructor(
+    private http: HttpClient,
+    private pipe: DecimalPipe,
+    httpErrorHandler: HttpErrorHandler) {
+    this.handleError = httpErrorHandler.createHandleError('TCMService');
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -87,25 +116,27 @@ export class ProjectService {
   }
 
   private _search(): Observable<SearchResult> {
-    const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
-
-    let tcmProjects:Project[] = [];
-    this.getProjectsList(tcmProjects);
-
-    console.log(tcmProjects);
-    // 1. sort
-    let projects = sort(tcmProjects, sortColumn, sortDirection);
-    // 2. filter
-    projects = projects.filter(project => matches(project, searchTerm, this.pipe));
-    const total = projects.length;
-    // 3. paginate
-    projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
-    return of({projects, total});  
-  }
-
-  public getProjectsList(projects) {
-    this.tcmService.getProjects().subscribe(
-      projectsList => projects = projectsList
+    return this.http.get(this.projectsUrl, httpOptions).pipe(
+      map(res => {
+        var list = JSON.parse(JSON.stringify(res)).map(
+          item => {
+            return new Item(
+              item.id,
+              item.name,
+              item.description,
+              "assets/projects/AI.svg",
+              0
+            );
+          }
+        )
+        const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
+        let projects = sort(list, sortColumn, sortDirection);
+        projects = projects.filter(project => matches(project, searchTerm, this.pipe));
+        const total = projects.length;
+        projects = projects.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize); 
+        var res:Object = new Result(projects, total);
+        return res as SearchResult;
+      })
     )
   }
 }
