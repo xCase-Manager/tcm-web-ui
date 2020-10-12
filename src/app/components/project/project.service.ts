@@ -51,7 +51,7 @@ export class ProjectService {
   private _search$ = new Subject<void>();
   private _projects$ = new BehaviorSubject<Project[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
-  projectsUrl = environment.apiUrl + '/projects';
+  private projectsUrl = environment.apiUrl + '/projects';
   private handleError: HandleError;
 
   private _state: State = {
@@ -109,8 +109,8 @@ export class ProjectService {
               item.id,
               item.name,
               item.description,
-              "assets/projects/AI.svg",
-              0
+              item.icon,
+              item.status
             );
           }
         )
