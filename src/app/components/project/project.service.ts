@@ -6,6 +6,7 @@ import {debounceTime, delay, switchMap, tap, map, catchError} from 'rxjs/operato
 import {SortColumn, SortDirection} from './projectsList/sortable.directive';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
+import { environment } from './../../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -68,7 +69,7 @@ export class ProjectService {
   private _search$ = new Subject<void>();
   private _projects$ = new BehaviorSubject<Project[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
-  projectsUrl = 'http://localhost:3000/api/projects';
+  projectsUrl = environment.apiUrl + '/projects';
   private handleError: HandleError;
 
   private _state: State = {
