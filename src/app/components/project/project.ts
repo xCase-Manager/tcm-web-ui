@@ -2,6 +2,6 @@ export interface Project {
   id: string;
   name: string;
   icon: string;
-  state: number;
+  status: number;
   description: string;
 }

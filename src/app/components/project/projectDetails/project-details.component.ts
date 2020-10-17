@@ -32,7 +32,7 @@ export class ProjectDetailsComponent implements OnInit {
     if (this.currentProject) {
       this.renderer.setProperty(this.projectTitle.nativeElement.children[0], 
         'innerHTML', "project " + this.currentProject.name);
-      this.statusControl.setValue(this.currentProject.state);
+      this.statusControl.setValue(this.currentProject.status);
       this.logoImage.nativeElement.setAttribute('src',this.currentProject.icon);
     }  
   }
@@ -50,7 +50,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   cancel() {
     this.nameControl.setValue(this.currentProject.name);
-    this.statusControl.setValue(this.currentProject.state);
+    this.statusControl.setValue(this.currentProject.status);
     this._disableForm();
   } 
 

@@ -42,7 +42,7 @@ function sort(projects: Project[], column: SortColumn,
 function matches(project: Project, term: string, pipe: PipeTransform) {
   return project.name.toLowerCase().includes(term.toLowerCase())
     || project.description.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(project.state).includes(term);
+    || pipe.transform(project.status).includes(term);
 }
 
 @Injectable({providedIn: 'root'})

@@ -20,7 +20,7 @@
         <th scope="col">#</th>
         <th scope="col" sortable="name" (sort)="onSort($event)">Project</th>
         <th scope="col" sortable="description" (sort)="onSort($event)">Description</th>
-        <th scope="col" sortable="state" (sort)="onSort($event)">State</th>
+        <th scope="col" sortable="status" (sort)="onSort($event)">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
           <ngb-highlight [result]="project.description" [term]="service.searchTerm"></ngb-highlight>
         </td>
         <td>
-          <ngb-highlight [result]="project.state | number" [term]="service.searchTerm"></ngb-highlight>
+          <ngb-highlight [result]="project.status" [term]="service.searchTerm"></ngb-highlight>
         </td>
       </tr>
     </tbody>

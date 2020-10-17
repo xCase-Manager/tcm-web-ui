@@ -6,6 +6,6 @@ export class Item implements Project {
       public name: string,
       public description: string,
       public icon: string,
-      public state: number
+      public status: number
     ) {}
 }
