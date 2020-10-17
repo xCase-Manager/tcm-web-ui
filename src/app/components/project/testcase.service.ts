@@ -35,7 +35,7 @@ function sort(testcases: Testcase[], column: SortColumn, direction: string): Tes
 function matches(testcase: Testcase, term: string, pipe: PipeTransform) {
   return testcase.name.toLowerCase().includes(term.toLowerCase())
     || testcase.description.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(testcase.state).includes(term);
+    || pipe.transform(testcase.status).includes(term);
 }
 
 @Injectable({providedIn: 'root'})

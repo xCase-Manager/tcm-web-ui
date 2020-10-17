@@ -1,7 +1,7 @@
 export interface Testcase {
   id: string;
   name: string;
-  state: number;
+  status: number;
   description: string;
   projectId: string;
 }
