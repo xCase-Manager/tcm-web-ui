@@ -31,8 +31,7 @@ export class TestcaseDetailsComponent implements OnInit {
     if (this.currentTestcase) {
       this.renderer.setProperty(this.testcaseTitle.nativeElement.children[0], 
         'innerHTML', "testcase " + this.currentTestcase.name);
-      this.statusControl.setValue(this.currentTestcase.state);
-      //this.logoImage.nativeElement.setAttribute('src',this.currentTestcase.icon);
+      this.statusControl.setValue(this.currentTestcase.status);
     }  
   }
 
