@@ -37,11 +37,12 @@ export class TestcasesListComponent  {
   }
 
   onSort({column, direction}: SortEvent) {
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
+    if(this.headers != undefined)
+      this.headers.forEach(header => {
+        if (header.sortable !== column) {
+          header.direction = '';
+        }
+      });
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
